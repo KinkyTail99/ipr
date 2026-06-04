@@ -1,0 +1,152 @@
+<!DOCTYPE html>
+<html lang="ru">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Отель Минск | Официальный сайт БГУИР</title>
+    <link rel="stylesheet" href="https://jsdelivr.net">
+    <style>
+        :root {
+            --hotel-dark: #1a1a1a;
+            --hotel-gold: #b89447;
+            --hotel-gold-hover: #9c7a33;
+            --hotel-light: #f4f4f6;
+        }
+        * { box-sizing: border-box; margin: 0; padding: 0; }
+        body {
+            font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, sans-serif;
+            background-color: var(--hotel-light);
+            color: #333;
+            line-height: 1.5;
+        }
+        .navbar-hotel {
+            background-color: var(--hotel-dark);
+            border-bottom: 3px solid var(--hotel-gold);
+            padding: 15px 30px;
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+        }
+        .navbar-brand-hotel {
+            color: #ffffff;
+            font-weight: 700;
+            text-transform: uppercase;
+            letter-spacing: 2px;
+            text-decoration: none;
+            font-size: 1.3rem;
+            display: flex;
+            align-items: center;
+            gap: 12px;
+        }
+        .navbar-brand-hotel span { color: var(--hotel-gold); }
+        .logo-img {
+            width: 35px;
+            height: 35px;
+            object-fit: contain;
+        }
+        .btn-gold {
+            background-color: var(--hotel-gold);
+            color: #fff;
+            font-weight: 600;
+            text-decoration: none;
+            padding: 8px 20px;
+            text-transform: uppercase;
+            font-size: 0.8rem;
+            transition: background 0.3s;
+            display: flex;
+            align-items: center;
+            gap: 8px;
+        }
+        .btn-gold:hover { background-color: var(--hotel-gold-hover); }
+        .hero-banner {
+            background: linear-gradient(rgba(0, 0, 0, 0.8), rgba(0, 0, 0, 0.9)), #222;
+            color: white;
+            text-align: center;
+            padding: 75px 20px;
+            border-bottom: 1px solid #333;
+        }
+        .hero-banner h1 { text-transform: uppercase; font-weight: 300; letter-spacing: 3px; margin-bottom: 10px; font-size: 2.2rem; color: #fff; }
+        .hero-banner p { color: #b89447; font-size: 0.95rem; font-weight: 500; text-transform: uppercase; letter-spacing: 2px; }
+        .container { max-width: 1200px; margin: 40px auto; padding: 0 20px; display: flex; gap: 30px; }
+        .main-content { flex: 2; }
+        .sidebar { flex: 1; display: flex; flex-direction: column; gap: 20px; }
+        .card-hotel {
+            background: #ffffff;
+            padding: 25px;
+            border-top: 4px solid var(--hotel-dark);
+            box-shadow: 0 5px 15px rgba(0,0,0,0.05);
+            margin-bottom: 25px;
+        }
+        .card-sidebar {
+            background: #ffffff;
+            padding: 20px;
+            border-top: 4px solid var(--hotel-gold);
+            box-shadow: 0 5px 15px rgba(0,0,0,0.05);
+            position: relative;
+            overflow: hidden;
+        }
+        .card-dark { background: var(--hotel-dark); color: white; border-top: 4px solid var(--hotel-gold); }
+        .room-card { background: white; border: 1px solid #e1e1e4; display: flex; margin-bottom: 20px; box-shadow: 0 4px 10px rgba(0,0,0,0.02); }
+        .room-image-box { min-width: 240px; width: 240px; height: 180px; background: #2a2d34; position: relative; display: flex; align-items: center; justify-content: center; }
+        .room-image-box i { font-size: 3rem; color: rgba(184, 148, 71, 0.3); }
+        .room-badge { position: absolute; top: 10px; left: 10px; background: rgba(0,0,0,0.85); color: var(--hotel-gold); padding: 4px 10px; font-size: 0.75rem; font-weight: 600; text-transform: uppercase; border: 1px solid var(--hotel-gold); z-index: 2; }
+        .room-details { padding: 20px; flex: 1; display: flex; flex-direction: column; justify-content: space-between; }
+        .room-header { display: flex; justify-content: space-between; align-items: flex-start; }
+        .room-title { font-size: 1.25rem; font-weight: 700; color: var(--hotel-dark); }
+        .room-price { text-align: right; }
+        .room-price .amount { font-size: 1.3rem; font-weight: 700; color: var(--hotel-gold); }
+        .room-price .unit { font-size: 0.8rem; color: #777; }
+        .room-desc { color: #666; font-size: 0.85rem; margin: 10px 0; line-height: 1.5; }
+        .room-footer { display: flex; justify-content: space-between; align-items: center; border-top: 1px solid #eee; padding-top: 12px; margin-top: 10px; }
+        .room-capacity { font-size: 0.85rem; color: #555; display: flex; align-items: center; gap: 6px; }
+        .btn-book { border: 1px solid var(--hotel-dark); color: var(--hotel-dark); text-decoration: none; padding: 5px 15px; font-size: 0.8rem; text-transform: uppercase; font-weight: 600; transition: all 0.3s; display: flex; align-items: center; gap: 6px; }
+        .btn-book:hover { background: var(--hotel-dark); color: white; }
+        .api-box { border: 1px solid #333; padding: 15px; margin-top: 15px; background: rgba(255,255,255,0.05); display: flex; align-items: center; gap: 15px; }
+        .api-title { color: var(--hotel-gold); font-weight: 600; font-size: 0.85rem; text-transform: uppercase; margin-bottom: 5px; }
+        .api-icon { font-size: 1.8rem; color: var(--hotel-gold); }
+        pre { font-family: monospace; font-size: 0.95rem; line-height: 1.4; color: var(--hotel-gold); background: #111; padding: 15px; border-left: 3px solid var(--hotel-gold); margin-top: 10px; text-align: center; }
+        footer { background: var(--hotel-dark); color: #777; text-align: center; padding: 20px; font-size: 0.8rem; margin-top: 60px; border-top: 2px solid var(--hotel-gold); }
+    </style>
+</head>
+<body>
+
+    <nav class="navbar-hotel">
+        <a class="navbar-brand-hotel" href="/">
+            <svg class="logo-img" viewBox="0 0 24 24" fill="none" xmlns="http://w3.org"><path d="M2 19h20v2H2v-2zm2-2h16V9l-4 3-4-6-4 6-4-3v8zm3-3.5a1.5 1.5 0 110-3 1.5 1.5 0 010 3zm5-4a1.5 1.5 0 110-3 1.5 1.5 0 010 3zm5 4a1.5 1.5 0 110-3 1.5 1.5 0 010 3z" fill="#b89447"/></svg>
+            Отель <span>Минск</span>
+        </a>
+        <div style="display: flex; align-items: center; gap: 10px;">
+            <!-- Ссылки для Администратора/Персонала -->
+            {% if user.is_staff %}
+                <a class="btn-gold" href="/clients/" style="background-color: #333;">👥 База клиентов</a>
+                <a class="btn-gold" href="/statistics/">📊 Аналитика фонда</a>
+            {% endif %}
+            
+            <!-- Динамический блок авторизации БГУИР -->
+            {% if user.is_authenticated %}
+                <span style="color: white; font-size: 0.85rem; margin-left: 10px;">
+                    <i class="bi bi-person-circle" style="color: var(--hotel-gold);"></i> {{ user.username }}
+                </span>
+                <a href="/accounts/logout/" class="btn-gold" style="background-color: #dc3545; padding: 6px 12px; font-size: 0.75rem;">Выйти</a>
+            {% else %}
+                <a href="/accounts/login/" class="btn-gold" style="background-color: #198754; padding: 6px 12px; font-size: 0.75rem;">Войти</a>
+                <a href="/accounts/register/" class="btn-gold" style="background-color: #0d6efd; padding: 6px 12px; font-size: 0.75rem;">Регистрация</a>
+            {% endif %}
+        </div>
+    </nav>
+
+    <div class="hero-banner">
+        <h1>Изысканный комфорт в центре столицы</h1>
+        <p>Премиальный сервис высшего качества</p>
+    </div>
+
+    <div class="container">
+        {% block content %}{% endblock %}
+    </div>
+
+    <footer>
+        <p>© 2026 Отель Минск, г. Минск. Официальный сайт. Разработано строго по спецификации БГУИР.</p>
+    </footer>
+
+</body>
+</html>

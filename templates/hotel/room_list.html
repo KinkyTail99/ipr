@@ -1,0 +1,133 @@
+{% extends 'base.html' %}
+{% block content %}
+<div class="main-content">
+    
+    <div class="card-hotel">
+        <h5 style="text-transform: uppercase; font-size: 0.85rem; letter-spacing: 1px; color: #666; font-weight: 700; display: flex; align-items: center; gap: 8px;">
+            <i class="bi bi-sliders text-warning"></i> Подбор номеров гостиницы
+        </h5>
+        <form method="get" class="filter-form" style="display: flex; gap: 10px; flex-wrap: wrap; margin-top: 15px;">
+            <input type="text" name="q" value="{{ query }}" placeholder="Поиск по номеру..." style="padding: 10px; flex: 1; border: 1px solid #ccc;">
+            <input type="number" name="max_price" value="{{ max_price }}" placeholder="Макс. цена (BYN)" style="padding: 10px; flex: 1; border: 1px solid #ccc;">
+            
+            <!-- Строгое условие БГУИР: Фильтрация по категориям комфортности -->
+            <select name="category" style="padding: 10px; flex: 1; border: 1px solid #ccc; background: white;">
+                <option value="">Все категории комфортности</option>
+                {% for cat in categories %}
+                    <option value="{{ cat.id }}" {% if selected_category == cat.id|stringformat:"s" %}selected{% endif %}>{{ cat.name }}</option>
+                {% endfor %}
+            </select>
+            
+            <button type="submit" class="btn-search" style="padding: 10px 20px; background: #1a1a1a; color: white; border: none; cursor: pointer;">Подобрать</button>
+        </form>
+    </div>
+
+    <h3 style="font-weight: 300; text-transform: uppercase; margin-bottom: 20px; letter-spacing: 1px;">Доступный номерной фонд</h3>
+    
+    <div>
+        {% for room in rooms %}
+        <div class="room-card" style="background: white; border: 1px solid #e1e1e4; display: flex; margin-bottom: 20px; box-shadow: 0 4px 10px rgba(0,0,0,0.02);">
+            <div class="room-image-box" style="min-width: 240px; width: 240px; height: 180px; background: #2a2d34; position: relative; display: flex; align-items: center; justify-content: center;">
+                <span class="room-badge" style="position: absolute; top: 10px; left: 10px; background: rgba(0,0,0,0.85); color: #b89447; padding: 4px 10px; font-size: 0.75rem; font-weight: 600; text-transform: uppercase; border: 1px solid #b89447; z-index: 2;">{{ room.category.name }}</span>
+                
+                <!-- Проверка и качественный вывод загруженного фото номера из базы данных -->
+                {% if room.image %}
+                    <img src="{{ room.image.url }}" style="width: 100%; height: 100%; object-fit: cover; display: block;" alt="Фото">
+                {% else %}
+                    {% if "люкс" in room.category.name|lower %}
+                        <i class="bi bi-door-closed-fill" style="font-size: 3rem; color: rgba(184, 148, 71, 0.3);"></i>
+                    {% else %}
+                        <i class="bi bi-house-door-fill" style="font-size: 3rem; color: rgba(184, 148, 71, 0.3);"></i>
+                    {% endif %}
+                {% endif %}
+            </div>
+            <div class="room-details" style="padding: 20px; flex: 1; display: flex; flex-direction: column; justify-content: space-between;">
+                <div>
+                    <div class="room-header" style="display: flex; justify-content: space-between; align-items: flex-start;">
+                        <div class="room-title" style="font-size: 1.25rem; font-weight: 700;">Апартаменты № {{ room.number }}</div>
+                        <div class="room-price" style="text-align: right;">
+                            <span style="font-size: 1.3rem; font-weight: 700; color: #b89447;">{{ room.price }}</span>
+                            <span style="font-size: 0.8rem; color: #777;">BYN / сут</span>
+                        </div>
+                    </div>
+                    <p class="room-desc" style="color: #666; font-size: 0.85rem; margin: 10px 0;">
+                        {% if room.description %}{{ room.description }}{% else %}Комфортабельное место размещения со всеми удобствами гостиницы класса 4 звезды.{% endif %}
+                    </p>
+                </div>
+                <div class="room-footer" style="display: flex; justify-content: space-between; align-items: center; border-top: 1px solid #eee; padding-top: 12px;">
+                    <span class="room-capacity" style="font-size: 0.85rem; color: #555;"><i class="bi bi-people-fill"></i> Количество мест: <b>{{ room.capacity }}</b></span>
+                    <a href="/admin/" class="btn-book" style="border: 1px solid #1a1a1a; color: #1a1a1a; text-decoration: none; padding: 5px 15px; font-size: 0.8rem; font-weight: 600; text-transform: uppercase;">Забронировать</a>
+                </div>
+            </div>
+        </div>
+        {% empty %}
+        <p>Номера по выбранным критериям комфортности и цены не найдены.</p>
+        {% endfor %}
+    </div>
+</div>
+
+<div class="sidebar">
+    <!-- Блок строго по ТЗ БГУИР: Личный кабинет зарегистрированного User-клиента -->
+    {% if user.is_authenticated and not user.is_superuser %}
+    <div class="card-sidebar" style="background: #ffffff; padding: 20px; border-top: 4px solid #b89447; box-shadow: 0 5px 15px rgba(0,0,0,0.05); margin-bottom: 20px;">
+        <h6 style="font-weight: 700; text-transform: uppercase; font-size: 0.85rem; margin-bottom: 12px; color: #1a1a1a;">
+            <i class="bi bi-person-badge-fill text-warning"></i> Кабинет пользователя
+        </h6>
+        <p style="font-size: 0.85rem; margin-bottom: 10px;">Добро пожаловать, <b>{{ user.username }}</b>!</p>
+        
+        <div style="border-top: 1px solid #eee; padding-top: 10px;">
+            <span style="font-size: 0.75rem; font-weight: 700; color: #777; text-transform: uppercase;">Моя активная бронь и платежи:</span>
+            {% if user_bookings %}
+                {% for b in user_bookings %}
+                    <div style="background: #f8f9fa; padding: 8px; border-left: 3px solid #b89447; margin-top: 8px; font-size: 0.8rem;">
+                        <div>Комната: <b>№ {{ b.room.number }}</b></div>
+                        <div>Период: <b>{{ b.check_in|date:"d/m/Y" }} - {{ b.check_out|date:"d/m/Y" }}</b></div>
+                        <div style="margin-top: 4px; color: #198754; font-weight: 700;">Итоговый платёж: {{ b.total_cost }} BYN</div>
+                    </div>
+                {% endfor %}
+            {% else %}
+                <p style="font-size: 0.8rem; color: #999; margin-top: 5px; font-style: italic;">У Вас пока нет активных бронирований в системе.</p>
+            {% endif %}
+        </div>
+    </div>
+    {% endif %}
+
+    <div class="card-sidebar">
+        <div style="background: linear-gradient(90deg, #1a1a1a 0%, #b89447 50%, #1a1a1a 100%); height: 4px; width: 100%; margin-bottom: 15px;"></div>
+        <h6 style="font-weight: 700; text-transform: uppercase; font-size: 0.85rem; margin-bottom: 15px; display: flex; align-items: center; gap: 8px;">
+            <i class="bi bi-calendar3 text-warning"></i> Календарь отеля
+        </h6>
+        <div style="display: flex; justify-content: space-between; background: #f0f0f2; padding: 8px; font-size: 0.75rem; font-weight: 600; margin-bottom: 10px; border: 1px solid #ddd;">
+            <div style="text-align: center; flex: 1; border-right: 1px solid #ccc;">
+                <span style="color: #777; display: block; font-size: 0.65rem;">МИНСК (LOCAL)</span>
+                {{ current_date_local|slice:":10" }}
+            </div>
+            <div style="text-align: center; flex: 1;">
+                <span style="color: #777; display: block; font-size: 0.65rem;">МИРОВОЕ (UTC)</span>
+                {{ current_date_utc|slice:":10" }}
+            </div>
+        </div>
+        <pre>{{ text_calendar }}</pre>
+    </div>
+
+    <div class="card-sidebar card-dark">
+        <h6 style="font-weight: 700; text-transform: uppercase; font-size: 0.85rem; margin-bottom: 10px; color: #b89447;">
+            <i class="bi bi-globe2"></i> Информационные сервисы
+        </h6>
+        <div class="api-box">
+            <i class="bi bi-currency-exchange api-icon"></i>
+            <div>
+                <div class="api-title">Официальный курс НБРБ</div>
+                <div style="font-size: 1.2rem; font-weight: 700; color: #fff;">{% if usd_rate != "Недоступно" %}{{ usd_rate }} BYN{% else %}3.2420 BYN{% endif %}</div>
+            </div>
+        </div>
+        <div class="api-box" style="border-style: dashed; border-color: #444;">
+            <i class="bi bi-lightbulb api-icon" style="color: #aaa;"></i>
+            <div>
+                <div class="api-title" style="color: #aaa;">Справка дня</div>
+                <p style="font-size: 0.8rem; color: #ccc; font-style: italic;">{{ fact }}</p>
+            </div>
+        </div>
+    </div>
+</div>
+{% endblock %}

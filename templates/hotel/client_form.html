@@ -1,0 +1,47 @@
+{% extends 'base.html' %}
+{% block content %}
+<div class="card-hotel" style="max-width: 600px; margin: 0 auto; padding: 30px; background: white;">
+    <h2 style="font-weight: 300; text-transform: uppercase; margin-bottom: 25px; border-bottom: 2px solid #b89447; padding-bottom: 10px;">{{ title }}</h2>
+    
+    <form method="post">
+        {% csrf_token %}
+        {% if form.errors %}
+            <div style="color: #dc3545; margin-bottom: 15px; font-size: 0.85rem;">⚠️ Пожалуйста, исправьте ошибки в полях формы.</div>
+        {% endif %}
+        
+        <div>
+            <label style="display: block; font-weight: 600; margin-bottom: 5px; font-size: 0.85rem;">Фамилия:</label>
+            {{ form.last_name }}
+        </div>
+        <div>
+            <label style="display: block; font-weight: 600; margin-bottom: 5px; font-size: 0.85rem;">Имя:</label>
+            {{ form.first_name }}
+        </div>
+        <div>
+            <label style="display: block; font-weight: 600; margin-bottom: 5px; font-size: 0.85rem;">Отчество:</label>
+            {{ form.patronymic }}
+        </div>
+        <div>
+            <label style="display: block; font-weight: 600; margin-bottom: 5px; font-size: 0.85rem;">Телефон:</label>
+            {{ form.phone }}
+        </div>
+        <div>
+            <label style="display: block; font-weight: 600; margin-bottom: 5px; font-size: 0.85rem;">Дата рождения:</label>
+            {{ form.birth_date }}
+        </div>
+        <div style="display: flex; align-items: center; gap: 10px; margin-top: 10px;">
+            {{ form.has_child }}
+            <label style="font-weight: 600; font-size: 0.85rem;">Есть ли ребенок</label>
+        </div>
+        <div style="margin-top: 15px;">
+            <label style="display: block; font-weight: 600; margin-bottom: 5px; font-size: 0.85rem;">Комментарий о клиенте:</label>
+            {{ form.comment }}
+        </div>
+
+        <div style="margin-top: 25px; display: flex; gap: 15px;">
+            <button type="submit" class="btn-search" style="padding: 10px 25px; background: #b89447; color: white; border: none; cursor: pointer; font-weight: 600; text-transform: uppercase;">Сохранить</button>
+            <a href="{% url 'client_list' %}" style="padding: 10px 25px; border: 1px solid #1a1a1a; color: #1a1a1a; text-decoration: none; text-transform: uppercase; font-size: 0.8rem; font-weight: 600; display: inline-block;">Отмена</a>
+        </div>
+    </form>
+</div>
+{% endblock %}

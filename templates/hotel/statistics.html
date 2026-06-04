@@ -1,0 +1,53 @@
+{% extends 'base.html' %}
+{% block content %}
+<div class="d-flex align-items-center justify-content-between mb-4 pb-3 border-bottom" style="display: flex; justify-content: space-between; align-items: center; margin-bottom: 20px; padding-bottom: 10px; border-bottom: 1px solid #ddd;">
+    <h2 style="font-weight: 300; text-transform: uppercase; letter-spacing: 1px; margin: 0;">Аналитика номерного фонда</h2>
+    <a href="/" class="btn-book" style="text-decoration: none; padding: 8px 20px; background: #1a1a1a; color: white;">← В каталог</a>
+</div>
+
+<div style="display: flex; gap: 30px; margin-top: 20px;">
+    <!-- Метрики -->
+    <div style="flex: 1; display: flex; flex-direction: column; gap: 20px;">
+        <div style="display: flex; gap: 20px;">
+            <div class="card-sidebar" style="flex: 1; border-left: 4px solid #198754; text-align: center;">
+                <div style="color: #777; text-transform: uppercase; font-size: 0.7rem; margin-bottom: 5px;">Общий доход</div>
+                <div style="font-size: 1.8rem; font-weight: 700; color: #198754;">{{ stats.total_income }} <span style="font-size: 1rem; font-weight: normal;">BYN</span></div>
+            </div>
+            <div class="card-sidebar" style="flex: 1; border-left: 4px solid #0d6efd; text-align: center;">
+                <div style="color: #777; text-transform: uppercase; font-size: 0.7rem; margin-bottom: 5px;">Средний чек</div>
+                <div style="font-size: 1.8rem; font-weight: 700; color: #0d6efd;">{{ stats.income_mean|floatformat:1 }} <span style="font-size: 1rem; font-weight: normal;">BYN</span></div>
+            </div>
+        </div>
+        
+        <div style="display: flex; gap: 20px;">
+            <div class="card-sidebar" style="flex: 1; text-align: center;">
+                <div style="color: #777; text-transform: uppercase; font-size: 0.7rem; margin-bottom: 5px;">Медиана</div>
+                <div style="font-size: 1.4rem; font-weight: 700;">{{ stats.income_median }} BYN</div>
+            </div>
+            <div class="card-sidebar" style="flex: 1; text-align: center;">
+                <div style="color: #777; text-transform: uppercase; font-size: 0.7rem; margin-bottom: 5px;">Мода</div>
+                <div style="font-size: 1.4rem; font-weight: 700;">{{ stats.income_mode }} BYN</div>
+            </div>
+        </div>
+
+        <div class="card-sidebar" style="display: flex; align-items: center; padding: 20px; background: white;">
+            <div>
+                <div style="color: #777; text-transform: uppercase; font-size: 0.7rem; margin-bottom: 3px;">Демографический срез</div>
+                <div style="font-size: 1.1rem; font-weight: 700; color: #333;">
+                    {% if stats.age_mean %}Средний возраст постояльцев: {{ stats.age_mean|floatformat:1 }} лет{% else %}Пока нет данных о клиентах{% endif %}
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <!-- График Matplotlib -->
+    <div style="flex: 1;">
+        <div class="card-sidebar" style="text-align: center; height: 100%; display: flex; flex-direction: column; justify-content: center; align-items: center;">
+            <h6 style="font-weight: 700; text-transform: uppercase; font-size: 0.85rem; color: #555; margin-bottom: 15px;">📊 Загруженность фонда</h6>
+            <div style="background: #f8f9fa; padding: 10px; border: 1px solid #eee; width: 100%;">
+                <img src="{{ chart }}" style="max-width: 100%; height: auto; display: block; margin: 0 auto;" alt="График аналитики">
+            </div>
+        </div>
+    </div>
+</div>
+{% endblock %}
