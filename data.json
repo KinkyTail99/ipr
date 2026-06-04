@@ -1,0 +1,351 @@
+[
+{
+    "model": "admin.logentry",
+    "pk": 1,
+    "fields": {
+        "action_time": "2026-06-03T19:16:27.299Z",
+        "user": 1,
+        "content_type": 9,
+        "object_id": "1",
+        "object_repr": "Стандарт",
+        "action_flag": 1,
+        "change_message": "[{\"added\": {}}]"
+    }
+},
+{
+    "model": "admin.logentry",
+    "pk": 2,
+    "fields": {
+        "action_time": "2026-06-03T19:16:57.653Z",
+        "user": 1,
+        "content_type": 9,
+        "object_id": "2",
+        "object_repr": "Полулюкс",
+        "action_flag": 1,
+        "change_message": "[{\"added\": {}}]"
+    }
+},
+{
+    "model": "admin.logentry",
+    "pk": 3,
+    "fields": {
+        "action_time": "2026-06-03T19:17:02.032Z",
+        "user": 1,
+        "content_type": 9,
+        "object_id": "3",
+        "object_repr": "Люкс",
+        "action_flag": 1,
+        "change_message": "[{\"added\": {}}]"
+    }
+},
+{
+    "model": "admin.logentry",
+    "pk": 4,
+    "fields": {
+        "action_time": "2026-06-03T19:24:27.908Z",
+        "user": 1,
+        "content_type": 10,
+        "object_id": "101",
+        "object_repr": "Номер 101 (Стандарт)",
+        "action_flag": 1,
+        "change_message": "[{\"added\": {}}]"
+    }
+},
+{
+    "model": "admin.logentry",
+    "pk": 5,
+    "fields": {
+        "action_time": "2026-06-03T20:58:32.507Z",
+        "user": 1,
+        "content_type": 10,
+        "object_id": "102",
+        "object_repr": "Номер 102 (Стандарт)",
+        "action_flag": 1,
+        "change_message": "[{\"added\": {}}]"
+    }
+},
+{
+    "model": "admin.logentry",
+    "pk": 6,
+    "fields": {
+        "action_time": "2026-06-03T21:01:01.898Z",
+        "user": 1,
+        "content_type": 10,
+        "object_id": "103",
+        "object_repr": "Номер 103 (Стандарт)",
+        "action_flag": 1,
+        "change_message": "[{\"added\": {}}]"
+    }
+},
+{
+    "model": "admin.logentry",
+    "pk": 7,
+    "fields": {
+        "action_time": "2026-06-03T21:02:05.186Z",
+        "user": 1,
+        "content_type": 10,
+        "object_id": "104",
+        "object_repr": "Номер 104 (Стандарт)",
+        "action_flag": 1,
+        "change_message": "[{\"added\": {}}]"
+    }
+},
+{
+    "model": "admin.logentry",
+    "pk": 8,
+    "fields": {
+        "action_time": "2026-06-03T21:04:00.697Z",
+        "user": 1,
+        "content_type": 10,
+        "object_id": "201",
+        "object_repr": "Номер 201 (Полулюкс)",
+        "action_flag": 1,
+        "change_message": "[{\"added\": {}}]"
+    }
+},
+{
+    "model": "admin.logentry",
+    "pk": 9,
+    "fields": {
+        "action_time": "2026-06-03T21:05:16.482Z",
+        "user": 1,
+        "content_type": 10,
+        "object_id": "202",
+        "object_repr": "Номер 202 (Полулюкс)",
+        "action_flag": 1,
+        "change_message": "[{\"added\": {}}]"
+    }
+},
+{
+    "model": "admin.logentry",
+    "pk": 10,
+    "fields": {
+        "action_time": "2026-06-03T21:06:21.435Z",
+        "user": 1,
+        "content_type": 10,
+        "object_id": "203",
+        "object_repr": "Номер 203 (Полулюкс)",
+        "action_flag": 1,
+        "change_message": "[{\"added\": {}}]"
+    }
+},
+{
+    "model": "admin.logentry",
+    "pk": 11,
+    "fields": {
+        "action_time": "2026-06-03T21:07:26.889Z",
+        "user": 1,
+        "content_type": 10,
+        "object_id": "301",
+        "object_repr": "Номер 301 (Люкс)",
+        "action_flag": 1,
+        "change_message": "[{\"added\": {}}]"
+    }
+},
+{
+    "model": "admin.logentry",
+    "pk": 12,
+    "fields": {
+        "action_time": "2026-06-03T21:08:45.242Z",
+        "user": 1,
+        "content_type": 10,
+        "object_id": "302",
+        "object_repr": "Номер 302 (Люкс)",
+        "action_flag": 1,
+        "change_message": "[{\"added\": {}}]"
+    }
+},
+{
+    "model": "admin.logentry",
+    "pk": 13,
+    "fields": {
+        "action_time": "2026-06-03T21:11:14.695Z",
+        "user": 1,
+        "content_type": 10,
+        "object_id": "201",
+        "object_repr": "Номер 201 (Полулюкс)",
+        "action_flag": 2,
+        "change_message": "[{\"changed\": {\"fields\": [\"\\u0424\\u043e\\u0442\\u043e \\u043d\\u043e\\u043c\\u0435\\u0440\\u0430\"]}}]"
+    }
+},
+{
+    "model": "admin.logentry",
+    "pk": 14,
+    "fields": {
+        "action_time": "2026-06-03T21:12:45.812Z",
+        "user": 1,
+        "content_type": 10,
+        "object_id": "303",
+        "object_repr": "Номер 303 (Люкс)",
+        "action_flag": 1,
+        "change_message": "[{\"added\": {}}]"
+    }
+},
+{
+    "model": "auth.user",
+    "pk": 1,
+    "fields": {
+        "password": "pbkdf2_sha256$600000$jX5JPAJ2sexFpALoF0NdtN$qo+HAWf69lXT4zMcIGTwZBXJkunl1cEVZbjlVQkhP0s=",
+        "last_login": "2026-06-03T20:54:47.182Z",
+        "is_superuser": true,
+        "username": "admin",
+        "first_name": "",
+        "last_name": "",
+        "email": "",
+        "is_staff": true,
+        "is_active": true,
+        "date_joined": "2026-06-03T18:26:47.093Z",
+        "groups": [],
+        "user_permissions": []
+    }
+},
+{
+    "model": "sessions.session",
+    "pk": "v372ng1mrfwvbn2zxv3n78ywriy81miz",
+    "fields": {
+        "session_data": ".eJxVjDsOwjAQBe_iGllrO_4sJT1nsNY_HEC2FCcV4u4QKQW0b2bei3na1uq3kRc_J3Zmgp1-t0DxkdsO0p3arfPY27rMge8KP-jg157y83K4fweVRv3WBtGFycoIADqm4hBNRhU0aIUaMhC4IqQkMoImiIWEVsYWLFZJYTN7fwC64zbk:1wUsbv:IcLiOM6_p-1LnLTBLLHhpYBn2Xy5gjjAmD12ILgLgQs",
+        "expire_date": "2026-06-17T20:54:47.185Z"
+    }
+},
+{
+    "model": "hotel.roomcategory",
+    "pk": 1,
+    "fields": {
+        "name": "Стандарт"
+    }
+},
+{
+    "model": "hotel.roomcategory",
+    "pk": 2,
+    "fields": {
+        "name": "Полулюкс"
+    }
+},
+{
+    "model": "hotel.roomcategory",
+    "pk": 3,
+    "fields": {
+        "name": "Люкс"
+    }
+},
+{
+    "model": "hotel.room",
+    "pk": 101,
+    "fields": {
+        "capacity": 2,
+        "price": "120.00",
+        "category": 1,
+        "description": "Уютный однокомнатный номер со всеми удобствами. В номере есть удобная кровать, рабочий стол, ЖК-телевизор, кондиционер и бесплатный Wi-Fi. Идеально подходит для деловых поездок.",
+        "image": "rooms/standart_1.jpg",
+        "features": []
+    }
+},
+{
+    "model": "hotel.room",
+    "pk": 102,
+    "fields": {
+        "capacity": 2,
+        "price": "125.00",
+        "category": 1,
+        "description": "Уютный двухместный номер. Идеальный баланс цены и качества для краткосрочных поездок.",
+        "image": "rooms/standart2.jpg",
+        "features": []
+    }
+},
+{
+    "model": "hotel.room",
+    "pk": 103,
+    "fields": {
+        "capacity": 1,
+        "price": "95.00",
+        "category": 1,
+        "description": "Компактный одноместный номер для деловых путешественников. Оснащен удобным рабочим местом.",
+        "image": "rooms/s3.jpg",
+        "features": []
+    }
+},
+{
+    "model": "hotel.room",
+    "pk": 104,
+    "fields": {
+        "capacity": 1,
+        "price": "110.00",
+        "category": 1,
+        "description": "Улучшенный одноместный номер с повышенной звукоизоляцией и видом во внутренний тихий дворик.",
+        "image": "rooms/s4.jpg",
+        "features": []
+    }
+},
+{
+    "model": "hotel.room",
+    "pk": 201,
+    "fields": {
+        "capacity": 2,
+        "price": "180.00",
+        "category": 2,
+        "description": "Просторный номер с выделенной зоной отдыха, мини-баром и кофемашиной для комфортного проживания.",
+        "image": "rooms/11.jpg",
+        "features": []
+    }
+},
+{
+    "model": "hotel.room",
+    "pk": 202,
+    "fields": {
+        "capacity": 3,
+        "price": "210.00",
+        "category": 2,
+        "description": "Трехместный семейный номер повышенной комфортности. Идеально подходит для отдыха с близкими.",
+        "image": "rooms/p5.jpg",
+        "features": []
+    }
+},
+{
+    "model": "hotel.room",
+    "pk": 203,
+    "fields": {
+        "capacity": 2,
+        "price": "195.00",
+        "category": 2,
+        "description": "Полулюкс с панорамными окнами и шикарным видом на вечерний город. Включает премиальный сервис.",
+        "image": "rooms/p6.jpg",
+        "features": []
+    }
+},
+{
+    "model": "hotel.room",
+    "pk": 301,
+    "fields": {
+        "capacity": 2,
+        "price": "350.00",
+        "category": 3,
+        "description": "Роскошные двухкомнатные апартаменты. Эксклюзивный дизайнерский интерьер и расширенный сервис отеля.",
+        "image": "rooms/p7.jpg",
+        "features": []
+    }
+},
+{
+    "model": "hotel.room",
+    "pk": 302,
+    "fields": {
+        "capacity": 4,
+        "price": "450.00",
+        "category": 3,
+        "description": "Представительский люкс для VIP-гостей. Большая гардеробная, уютная гостиная и премиальная бытовая техника.",
+        "image": "rooms/p8.jpg",
+        "features": []
+    }
+},
+{
+    "model": "hotel.room",
+    "pk": 303,
+    "fields": {
+        "capacity": 2,
+        "price": "380.00",
+        "category": 3,
+        "description": "Президентские апартаменты с джакузи, индивидуальным обслуживанием и уникальной мебелью на высшем уровне.",
+        "image": "rooms/14.jpg",
+        "features": []
+    }
+}
+]
